@@ -3,7 +3,6 @@ import re
 import math
 import time
 import jieba
-import tqdm
 
 DATA_PATH = '../jyxstxtqj/'
 
@@ -65,8 +64,8 @@ def get_bigram_tf(tf_dic, words):
 
 def get_trigram_tf(tf_dic, words):
     """
-    获取二元词词频
-    :return:二元词词频dic
+    获取三元词词频
+    :return:三元词词频dic
     """
     for i in range(len(words)-2):
         tf_dic[((words[i], words[i+1]), words[i+2])] = tf_dic.get(((words[i], words[i+1]), words[i+2]), 0) + 1
@@ -74,7 +73,8 @@ def get_trigram_tf(tf_dic, words):
 
 def print_md(table_name, head, row_title, col_title, data):
     """
-    :param head: 表名
+    :param table_name: 表名
+    :param head: 表头
     :param row_title: 行名，编号，1，2，3……
     :param col_title: 列名，词数，运行时间等
     :param data: {ndarray(H, W)}
